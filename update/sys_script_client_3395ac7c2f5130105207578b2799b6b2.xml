@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update sys_domain="global" table="sys_script_client">
+    <sys_script_client action="INSERT_OR_UPDATE">
+        <active>true</active>
+        <applies_extended>false</applies_extended>
+        <condition/>
+        <description>This script will send a notification whenever we have changed the value of the "Change This" columns</description>
+        <field>changethis</field>
+        <global>true</global>
+        <isolate_script>true</isolate_script>
+        <messages>x_58872_needit_need_it</messages>
+        <name>Notification</name>
+        <order/>
+        <script><![CDATA[function onCellEdit(sysIDs, table, oldValues, newValue, callback) {
+	
+	function numberCallback(response){
+		alert(response);
+	}
+	
+	var saveAndClose = true;
+	
+	
+	alert("The value of the field has changed from \"" + oldValues + "\" to \"" + newValue + "\"\n by: " + g_user.firstName + g_user.lastName);
+	var ga = new GlideAjax('NumberFetcher');
+	ga.addParam('sysparm_name','getNumber');
+	ga.addParam('sysparm_sys_ID', sysIDs);
+	ga.getXMLAnswer(numberCallback);
+
+	setTimeout(function (){
+	this.window.location.reload();
+	}, 300);
+	
+	callback(saveAndClose); 
+}]]></script>
+        <sys_class_name>sys_script_client</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2021-07-09 13:32:32</sys_created_on>
+        <sys_domain>global</sys_domain>
+        <sys_domain_path>/</sys_domain_path>
+        <sys_id>3395ac7c2f5130105207578b2799b6b2</sys_id>
+        <sys_mod_count>56</sys_mod_count>
+        <sys_name>Notification</sys_name>
+        <sys_overrides/>
+        <sys_package display_value="NeedIt" source="x_58872_needit">6ead8e780f603200cd674f8ce1050ed1</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="NeedIt">6ead8e780f603200cd674f8ce1050ed1</sys_scope>
+        <sys_update_name>sys_script_client_3395ac7c2f5130105207578b2799b6b2</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2021-07-16 10:20:28</sys_updated_on>
+        <table>x_58872_needit_need_it</table>
+        <type>onCellEdit</type>
+        <ui_type>0</ui_type>
+        <view/>
+    </sys_script_client>
+</record_update>

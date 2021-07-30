@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?><database>
+    <element label="Need IT" max_length="40" name="x_58872_needit_need_it" sizeclass="5" type="collection">
+        <element default="0" label="ChangeNumber" max_length="40" name="changenumber" read_only="true" type="integer"/>
+        <element display="true" label="ChangeThis" max_length="100" name="changethis" type="string"/>
+    </element>
+</database>
